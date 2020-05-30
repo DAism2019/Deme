@@ -1,0 +1,20 @@
+合约升级详细过程
+1、ArticleStore 暂停发表文章
+
+(如果要升级Article)
+2、获取 ArticleStore 中的 getInfoAddress() 和 getEnumAddress(),getAdminAddress() 并记录
+3、部署新的ArticleStoe ,并对上述三项进行设置
+4、运行旧ArticleStoe中的upgrade方法进行升级
+
+(如果要升级ArticleAdmin)
+2、获得ArticleAdmin中的nonce，（已经发布文章编号，切记）
+3、部署新的ArticleAdmin 并记录地址
+3、更新ArticleStore 中 setAdminAddress()。
+4、ArticleStore取消暂停
+
+（如果两者同时升级）
+2、获取 ArticleStore 中的 getInfoAddress() 和 getEnumAddress() 并记录
+3、部署新的ArticleStoe ,并对上述两项进行设置
+4、获得ArticleAdmin中的nonce，（已经发布文章编号，切记）再部署新的ArticleAdmin 并记录址
+5、设置新的ArticleStore 中 setAdminAddress()
+6、运行旧ArticleStoe中的upgrade方法进行升级
